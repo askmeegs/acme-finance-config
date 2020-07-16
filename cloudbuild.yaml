@@ -1,0 +1,12 @@
+steps:
+# Deploy manifests to the production cluster
+- name: "gcr.io/cloud-builders/kubectl"
+  id: 'Deploy to gcp'
+  args:
+    - "apply"
+    - "-f"
+    - "./kubernetes-manifests"
+  env:
+    - "CLOUDSDK_CORE_PROJECT=${PROJECT_ID}"
+    - "CLOUDSDK_COMPUTE_REGION=us-central1-c"
+    - "CLOUDSDK_CONTAINER_CLUSTER=prod"
